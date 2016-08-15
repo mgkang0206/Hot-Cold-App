@@ -1,5 +1,6 @@
 package ng.mgka.hotcold;
 
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -31,5 +32,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
   public void onConnectionFailed(ConnectionResult connectionResult){
 
   }
-  
+  @Override
+  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    switch (requestCode){
+      case 10:
+        if (grantResults.length > 0
+          && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          // permission was granted, yay! Do the
+          // contacts-related task you need to do.
+        } else {
+
+          // permission denied, boo! Disable the
+          // functionality that depends on this permission.
+        }
+        return;
+    }
+  }
+
 }
